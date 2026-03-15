@@ -656,9 +656,21 @@
     padding: 1rem;
   }
 
+  .robot-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
   .robot-img-box.wide {
     grid-column: 1 / -1;
     aspect-ratio: 16/6;
+  }
+
+  .robot-img-box.contain img {
+    object-fit: contain;
+    background: #000;
   }
 
   /* ─── SPONSORS ─── */
@@ -1033,19 +1045,44 @@
       </div>
       <div class="about-visual">
         <div class="about-img-main">
-          <div class="about-img-placeholder">
-            📷 Photo de l'équipe<br><small>(à remplacer par votre photo)</small>
-          </div>
+          <img src="Image__9_.jpeg" alt="Terrain de compétition BlueBot Reims" style="width:100%;height:100%;object-fit:cover;">
         </div>
         <div style="display:flex;gap:1rem;">
-          <div class="about-img-main" style="flex:1;aspect-ratio:1;">
-            <div class="about-img-placeholder">📷 Atelier</div>
+          <div class="about-img-main" style="flex:1;aspect-ratio:1;background:#000;">
+            <img src="Robot_Blue_Bot.png" alt="Robot 3D BlueBot" style="width:100%;height:100%;object-fit:contain;padding:0.5rem;">
           </div>
           <div class="about-img-main" style="flex:1;aspect-ratio:1;">
-            <div class="about-img-placeholder">📷 Assemblage</div>
+            <div class="about-img-placeholder">📷 Photo équipe<br><small>à ajouter</small></div>
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── GALERIE ROBOT ─── -->
+<section style="background:#030f1f;padding:3rem 2.5rem;">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;align-items:center;">
+      <div style="border-radius:16px;overflow:hidden;border:1px solid rgba(55,138,221,0.25);background:#000;aspect-ratio:4/3;">
+        <img src="Robot_Blue_Bot.png" alt="Robot BlueBot — Modélisation 3D" style="width:100%;height:100%;object-fit:contain;padding:1rem;">
+      </div>
+      <div>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#EF9F27;display:block;margin-bottom:0.75rem;">Modélisation 3D</span>
+        <h2 style="font-family:'Barlow Condensed',sans-serif;font-size:2.5rem;font-weight:800;text-transform:uppercase;color:#fff;line-height:1;margin-bottom:1rem;">Notre Robot<br>en détail</h2>
+        <p style="color:#85B7EB;font-size:0.95rem;line-height:1.7;margin-bottom:1.5rem;">
+          Le robot BlueBot est conçu pour relever les défis du FIRST Tech Challenge 2026. Roues mecanum omnidirectionnelles, système de collecte et de lancement de balles, élévateur de serrage — chaque pièce est pensée pour la performance.
+        </p>
+        <div style="display:flex;flex-wrap:wrap;gap:0.75rem;">
+          <span style="background:rgba(55,138,221,0.15);border:1px solid rgba(55,138,221,0.3);color:#B5D4F4;font-size:0.78rem;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;padding:4px 12px;border-radius:100px;">Mecanum wheels</span>
+          <span style="background:rgba(55,138,221,0.15);border:1px solid rgba(55,138,221,0.3);color:#B5D4F4;font-size:0.78rem;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;padding:4px 12px;border-radius:100px;">Clamping Elevator</span>
+          <span style="background:rgba(55,138,221,0.15);border:1px solid rgba(55,138,221,0.3);color:#B5D4F4;font-size:0.78rem;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;padding:4px 12px;border-radius:100px;">Limelight 3A</span>
+          <span style="background:rgba(55,138,221,0.15);border:1px solid rgba(55,138,221,0.3);color:#B5D4F4;font-size:0.78rem;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;padding:4px 12px;border-radius:100px;">Expansion Hub</span>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:1.5rem;border-radius:16px;overflow:hidden;border:1px solid rgba(55,138,221,0.2);aspect-ratio:16/6;">
+      <img src="Image__9_.jpeg" alt="Terrain de compétition — Construction BlueBot" style="width:100%;height:100%;object-fit:cover;object-position:center 40%;">
     </div>
   </div>
 </section>
@@ -1229,14 +1266,14 @@
       </div>
       <div>
         <div class="robot-images">
-          <div class="robot-img-box wide">
-            📷 Photos du robot à venir<br><small>Remplacer par vos images</small>
+          <div class="robot-img-box wide contain">
+            <img src="Robot_Blue_Bot.png" alt="Modélisation 3D robot BlueBot">
           </div>
           <div class="robot-img-box">
-            📐 Vue 3D<br><small>Modélisation CAO</small>
+            <img src="Image__9_.jpeg" alt="Terrain de jeu FTC" style="object-position: center top;">
           </div>
-          <div class="robot-img-box">
-            🔧 Assemblage<br><small>Atelier ECAM</small>
+          <div class="robot-img-box" style="background:#000;">
+            <img src="Robot_Blue_Bot.png" alt="Vue robot 3D" style="object-fit:contain;padding:0.5rem;">
           </div>
         </div>
       </div>
@@ -1270,7 +1307,7 @@
           En échange de soutien financier ou technique, votre logo apparaîtra sur notre robot, nos tenues d'équipe et nos supports de communication. Publications régulières sur nos réseaux (Instagram, TikTok, YouTube).
         </p>
       </div>
-      <a href="mailto:bluebotreims@gmail.com" class="btn-primary" style="white-space:nowrap;">Nous contacter →</a>
+      <a href="/cdn-cgi/l/email-protection#aac8c6dfcfc8c5ded8cfc3c7d9eacdc7cbc3c684c9c5c7" class="btn-primary" style="white-space:nowrap;">Nous contacter →</a>
     </div>
   </div>
 </section>
@@ -1284,13 +1321,13 @@
       <div class="contact-info">
         <h3>Coordonnées</h3>
         <div class="contact-items">
-          <a href="mailto:bluebotreims@gmail.com" class="contact-item">
+          <a href="/cdn-cgi/l/email-protection#c1a3adb4a4a3aeb5b3a4a8acb281a6aca0a8adefa2aeac" class="contact-item">
             <div class="contact-icon">✉</div>
-            <span>bluebotreims@gmail.com</span>
+            <span><span class="__cf_email__" data-cfemail="492b253c2c2b263d3b2c20243a092e24282025672a2624">[email&#160;protected]</span></span>
           </a>
-          <a href="mailto:ayoub.begougpro@gmail.com" class="contact-item">
+          <a href="/cdn-cgi/l/email-protection#f6978f998394d8949391998391868499b6919b979f9ad895999b" class="contact-item">
             <div class="contact-icon">✉</div>
-            <span>ayoub.begougpro@gmail.com</span>
+            <span><span class="__cf_email__" data-cfemail="b6d7cfd9c3d498d4d3d1d9c3d1c6c4d9f6d1dbd7dfda98d5d9db">[email&#160;protected]</span></span>
           </a>
           <div class="contact-item">
             <div class="contact-icon">📍</div>
@@ -1355,12 +1392,4 @@
     </div>
     <div style="display:flex;gap:0.75rem;">
       <a href="https://www.instagram.com/bluebotreims_ftc" target="_blank" class="social-btn" style="font-size:0.78rem;padding:0.4rem 0.9rem;">Insta</a>
-      <a href="https://www.tiktok.com/@blue.bot.reims" target="_blank" class="social-btn" style="font-size:0.78rem;padding:0.4rem 0.9rem;">TikTok</a>
-      <a href="https://www.youtube.com/@BLUEBOTREIMS_FTC" target="_blank" class="social-btn" style="font-size:0.78rem;padding:0.4rem 0.9rem;">YouTube</a>
-    </div>
-  </div>
-  <p class="footer-copy">© 2026 BlueBot Reims · ECAM LaSalle · FIRST Tech Challenge · @BLUEBOTREIMS</p>
-</footer>
-
-</body>
-</html>
+      <a href="https://www.tiktok.com/@blue.bot.reims" target="_blank" class="social-btn" style="font-size:0.78rem;padding:0.4
