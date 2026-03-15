@@ -1422,21 +1422,63 @@
     <h2 style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(2rem,5vw,3rem);font-weight:800;text-transform:uppercase;color:#fff;line-height:1;margin-bottom:1rem;">Suis nos aventures<br>en temps réel</h2>
     <p style="color:#85B7EB;font-size:1rem;line-height:1.7;margin-bottom:2rem;">Reçois nos actus directement dans ta boîte mail — robot, compétitions, coulisses.</p>
     <div style="background:rgba(12,68,124,0.25);border:1px solid rgba(55,138,221,0.25);border-radius:16px;padding:2rem;">
-      <form method="POST" action="https://beff7900.sibforms.com/serve/MUIFAOczLTpCMkkUZUfynEIP3bxzS8xWIr-2ibrjBJDFFxrBONJfjF5poqX00rgFY5Ax8dB5iqHLnmtRE9_MujbYtoa4vWRJsAZ0owSF0w_k_Z9NkwSiphM5LoKIKA8ynacHkOuSMRdXc-JZ5l9tEVPI6uoJ5HVcZWd7cOZdG0NIPVYIBiyH8uqwqgoSrDOyljlTjP_In8v3omDU4w==" target="_blank">
-        <div style="display:flex;gap:0.75rem;flex-wrap:wrap;justify-content:center;">
-          <input type="email" name="EMAIL" placeholder="Ton adresse email..." required
-            style="flex:1;min-width:220px;background:rgba(4,44,83,0.6);border:1px solid rgba(55,138,221,0.35);border-radius:8px;color:#fff;font-family:'Barlow',sans-serif;font-size:0.95rem;padding:0.75rem 1rem;outline:none;">
-          <button type="submit"
-            style="background:#185FA5;color:#fff;border:1px solid #378ADD;border-radius:8px;padding:0.75rem 1.5rem;font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;white-space:nowrap;">
-            S'inscrire →
-          </button>
-        </div>
-        <input type="text" name="email_address_check" value="" style="display:none;">
-        <input type="hidden" name="locale" value="fr">
-      </form>
+      <div style="display:flex;gap:0.75rem;flex-wrap:wrap;justify-content:center;">
+        <input type="email" id="newsletter-email" placeholder="Ton adresse email..." required
+          style="flex:1;min-width:220px;background:rgba(4,44,83,0.6);border:1px solid rgba(55,138,221,0.35);border-radius:8px;color:#fff;font-family:'Barlow',sans-serif;font-size:0.95rem;padding:0.75rem 1rem;outline:none;">
+        <button onclick="subscribNewsletter()"
+          style="background:#185FA5;color:#fff;border:1px solid #378ADD;border-radius:8px;padding:0.75rem 1.5rem;font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;white-space:nowrap;">
+          S'inscrire →
+        </button>
+      </div>
+      <p id="newsletter-msg" style="margin-top:1rem;font-size:0.9rem;display:none;"></p>
     </div>
   </div>
-</section>  
+</section>
+
+<script>
+async function subscribNewsletter() {
+  const email = document.getElementById('newsletter-email').value;
+  const msg = document.getElementById('newsletter-msg');
+
+  if (!email || !email.includes('@')) {
+    msg.style.display = 'block';
+    msg.style.color = '#ff4949';
+    msg.textContent = '⚠ Entre une adresse email valide.';
+    return;
+  }
+
+  msg.style.display = 'block';
+  msg.style.color = '#85B7EB';
+  msg.textContent = 'Inscription en cours...';
+
+  try {
+    const res = await fetch('https://api.brevo.com/v3/contacts', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'api-key': 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
+      },
+      body: JSON.stringify({
+        email: email,
+        listIds: [2],
+        updateEnabled: true
+      })
+    });
+
+    if (res.ok || res.status === 204) {
+      msg.style.color = '#13ce66';
+      msg.textContent = '✅ Merci ! Tu es bien inscrit(e) à la newsletter.';
+      document.getElementById('newsletter-email').value = '';
+    } else {
+      msg.style.color = '#ff4949';
+      msg.textContent = '❌ Une erreur est survenue. Réessaie plus tard.';
+    }
+  } catch(e) {
+    msg.style.color = '#ff4949';
+    msg.textContent = '❌ Une erreur est survenue. Réessaie plus tard.';
+  }
+}
+</script>  
 
 <!-- ─── FOOTER ─── -->
 <footer>
