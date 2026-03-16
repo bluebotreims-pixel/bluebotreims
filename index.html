@@ -86,6 +86,14 @@
   clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
   animation: sparkle 0.4s ease-out forwards;
 }
+
+.hero-logo-wrap {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 800px;
+}  
   
   :root {
     --blue-900: #042C53;
@@ -1540,7 +1548,6 @@ window.addEventListener('load', function() {
     marioSound.currentTime = 0;
     marioSound.play();
 
-    // Stoppe l'animation float
     logo.style.animation = 'none';
 
     let start = null;
@@ -1553,17 +1560,16 @@ window.addEventListener('load', function() {
       if (progress < 1) {
         const t = progress;
         const jump = -Math.sin(Math.PI * t) * 120;
-        const rotate = t * 360;
+        const rotateY = t * 360;
         const scale = 1 + Math.sin(Math.PI * t) * 0.3;
         const brightness = 1 + Math.sin(Math.PI * t) * 1.5;
         const glow = Math.sin(Math.PI * t) * 50;
 
-        logo.style.transform = `translateY(${jump}px) rotate(${rotate}deg) scale(${scale})`;
+        logo.style.transform = `translateY(${jump}px) rotateY(${rotateY}deg) scale(${scale})`;
         logo.style.filter = `brightness(${brightness}) drop-shadow(0 0 ${glow}px #FFD700)`;
 
         requestAnimationFrame(animate);
       } else {
-        // Remet le float après le saut
         logo.style.transform = '';
         logo.style.filter = '';
         logo.style.animation = 'float 4s ease-in-out infinite';
