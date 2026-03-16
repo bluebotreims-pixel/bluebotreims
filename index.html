@@ -50,20 +50,19 @@
   .g-recaptcha { margin: 0 auto; 
   }
 
-@keyframes medal {
-  0%   { transform: translateY(0) rotateY(0deg); }
-  15%  { transform: translateY(-30px) rotateY(90deg); }
-  30%  { transform: translateY(-50px) rotateY(180deg); }
-  45%  { transform: translateY(-30px) rotateY(270deg); }
-  60%  { transform: translateY(0) rotateY(360deg); }
-  75%  { transform: translateY(-15px) rotateY(400deg); }
-  90%  { transform: translateY(0) rotateY(420deg); }
-  100% { transform: translateY(0) rotateY(360deg); }
+@keyframes mario-jump {
+  0%   { transform: translateY(0) rotateY(0deg) scale(1); filter: drop-shadow(0 0 0px gold); }
+  20%  { transform: translateY(-60px) rotateY(180deg) scale(1.1); filter: drop-shadow(0 0 20px gold); }
+  40%  { transform: translateY(-90px) rotateY(360deg) scale(1.15); filter: drop-shadow(0 0 35px gold); }
+  60%  { transform: translateY(-60px) rotateY(540deg) scale(1.1); filter: drop-shadow(0 0 20px gold); }
+  80%  { transform: translateY(-20px) rotateY(680deg) scale(1.05); filter: drop-shadow(0 0 10px gold); }
+  90%  { transform: translateY(-8px) rotateY(710deg) scale(1.02); filter: drop-shadow(0 0 5px gold); }
+  100% { transform: translateY(0) rotateY(720deg) scale(1); filter: drop-shadow(0 0 0px gold); }
 }
 
 .medal-spin {
-  animation: medal 0.8s ease-in-out;
-}  
+  animation: mario-jump 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
   
   :root {
     --blue-900: #042C53;
@@ -1507,6 +1506,17 @@
 <script>
 const marioSound = new Audio('https://assets.mixkit.co/active_storage/sfx/2000/2000-preview.mp3');
 marioSound.volume = 0.5;
+
+document.getElementById('hero-logo').addEventListener('click', function() {
+  this.classList.remove('medal-spin');
+  void this.offsetWidth;
+  this.classList.add('medal-spin');
+  marioSound.currentTime = 0;
+  marioSound.play();
+  this.addEventListener('animationend', () => {
+    this.classList.remove('medal-spin');
+  }, { once: true });
+});
 </script>
   
 </body>
