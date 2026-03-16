@@ -1036,7 +1036,7 @@
     </div>
     <div class="hero-logo-wrap">
       <img id="hero-logo" src="bluebot_no_background_fixed.png" alt="BlueBot mascotte"
-        onclick="this.classList.remove('medal-spin'); void this.offsetWidth; this.classList.add('medal-spin');"
+        onclick="this.classList.remove('medal-spin'); void this.offsetWidth; this.classList.add('medal-spin'); marioSound.currentTime=0; marioSound.play();"
         style="cursor:pointer;"
         onerror="this.style.display='none'">
     </div>
@@ -1504,5 +1504,10 @@
   </div>
 </footer>
 
+<script>
+const marioSound = new Audio('https://assets.mixkit.co/active_storage/sfx/2000/2000-preview.mp3');
+marioSound.volume = 0.5;
+</script>
+  
 </body>
 </html>
