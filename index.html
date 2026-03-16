@@ -51,17 +51,40 @@
   }
 
 @keyframes mario-jump {
-  0%   { transform: translateY(0) rotateY(0deg) scale(1); filter: drop-shadow(0 0 0px gold); }
-  20%  { transform: translateY(-60px) rotateY(180deg) scale(1.1); filter: drop-shadow(0 0 20px gold); }
-  40%  { transform: translateY(-90px) rotateY(360deg) scale(1.15); filter: drop-shadow(0 0 35px gold); }
-  60%  { transform: translateY(-60px) rotateY(540deg) scale(1.1); filter: drop-shadow(0 0 20px gold); }
-  80%  { transform: translateY(-20px) rotateY(680deg) scale(1.05); filter: drop-shadow(0 0 10px gold); }
-  90%  { transform: translateY(-8px) rotateY(710deg) scale(1.02); filter: drop-shadow(0 0 5px gold); }
-  100% { transform: translateY(0) rotateY(720deg) scale(1); filter: drop-shadow(0 0 0px gold); }
+  0%   { transform: translateY(0px) scale(1) rotate(0deg); filter: brightness(1); }
+  10%  { transform: translateY(-20px) scale(1.05) rotate(15deg); filter: brightness(1.3) drop-shadow(0 0 10px #FFD700); }
+  25%  { transform: translateY(-80px) scale(1.2) rotate(90deg); filter: brightness(1.8) drop-shadow(0 0 30px #FFD700); }
+  40%  { transform: translateY(-100px) scale(1.25) rotate(180deg); filter: brightness(2) drop-shadow(0 0 40px #FFD700); }
+  55%  { transform: translateY(-80px) scale(1.2) rotate(270deg); filter: brightness(1.8) drop-shadow(0 0 30px #FFD700); }
+  70%  { transform: translateY(-30px) scale(1.1) rotate(340deg); filter: brightness(1.3) drop-shadow(0 0 15px #FFD700); }
+  85%  { transform: translateY(-10px) scale(1.05) rotate(355deg); filter: brightness(1.1) drop-shadow(0 0 5px #FFD700); }
+  92%  { transform: translateY(-5px) scale(1.02) rotate(358deg); filter: brightness(1.05); }
+  100% { transform: translateY(0px) scale(1) rotate(360deg); filter: brightness(1); }
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0; transform: scale(0); }
+  50% { opacity: 1; transform: scale(1); }
 }
 
 .medal-spin {
-  animation: mario-jump 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  animation: mario-jump 0.9s cubic-bezier(0.33, 0, 0.66, 1) forwards;
+}
+
+.sparkle-container {
+  position: absolute;
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  top: 0; left: 0;
+}
+
+.sparkle {
+  position: absolute;
+  width: 12px; height: 12px;
+  background: #FFD700;
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  animation: sparkle 0.4s ease-out forwards;
 }
   
   :root {
@@ -1507,12 +1530,40 @@
 const marioSound = new Audio('https://assets.mixkit.co/active_storage/sfx/2000/2000-preview.mp3');
 marioSound.volume = 0.5;
 
-document.getElementById('hero-logo').addEventListener('click', function() {
+const logo = document.getElementById('hero-logo');
+const wrap = logo.parentElement;
+wrap.style.position = 'relative';
+
+function createSparkles() {
+  const container = document.createElement('div');
+  container.className = 'sparkle-container';
+  const positions = [
+    {top:'10%',left:'10%'},{top:'10%',right:'10%'},
+    {top:'50%',left:'0%'},{top:'50%',right:'0%'},
+    {top:'80%',left:'20%'},{top:'80%',right:'20%'},
+    {top:'20%',left:'50%'},{top:'70%',left:'50%'}
+  ];
+  positions.forEach((pos, i) => {
+    const s = document.createElement('div');
+    s.className = 'sparkle';
+    Object.assign(s.style, pos);
+    s.style.animationDelay = (i * 0.05) + 's';
+    s.style.width = (8 + Math.random() * 10) + 'px';
+    s.style.height = s.style.width;
+    container.appendChild(s);
+  });
+  wrap.appendChild(container);
+  setTimeout(() => container.remove(), 600);
+}
+
+logo.style.cursor = 'pointer';
+logo.addEventListener('click', function() {
   this.classList.remove('medal-spin');
   void this.offsetWidth;
   this.classList.add('medal-spin');
   marioSound.currentTime = 0;
   marioSound.play();
+  createSparkles();
   this.addEventListener('animationend', () => {
     this.classList.remove('medal-spin');
   }, { once: true });
