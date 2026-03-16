@@ -1527,46 +1527,47 @@
 </footer>
 
 <script>
-const marioSound = new Audio('https://assets.mixkit.co/active_storage/sfx/2000/2000-preview.mp3');
-marioSound.volume = 0.5;
+window.addEventListener('load', function() {
+  const logo = document.getElementById('hero-logo');
+  if (!logo) return;
 
-const logo = document.getElementById('hero-logo');
-const wrap = logo.parentElement;
-wrap.style.position = 'relative';
+  const marioSound = new Audio('https://assets.mixkit.co/active_storage/sfx/2000/2000-preview.mp3');
+  marioSound.volume = 0.5;
 
-function createSparkles() {
-  const container = document.createElement('div');
-  container.className = 'sparkle-container';
-  const positions = [
-    {top:'10%',left:'10%'},{top:'10%',right:'10%'},
-    {top:'50%',left:'0%'},{top:'50%',right:'0%'},
-    {top:'80%',left:'20%'},{top:'80%',right:'20%'},
-    {top:'20%',left:'50%'},{top:'70%',left:'50%'}
-  ];
-  positions.forEach((pos, i) => {
-    const s = document.createElement('div');
-    s.className = 'sparkle';
-    Object.assign(s.style, pos);
-    s.style.animationDelay = (i * 0.05) + 's';
-    s.style.width = (8 + Math.random() * 10) + 'px';
-    s.style.height = s.style.width;
-    container.appendChild(s);
+  logo.style.cursor = 'pointer';
+  logo.style.transition = 'none';
+
+  logo.addEventListener('click', function() {
+    marioSound.currentTime = 0;
+    marioSound.play();
+
+    let start = null;
+    const duration = 900;
+
+    function animate(timestamp) {
+      if (!start) start = timestamp;
+      const progress = (timestamp - start) / duration;
+
+      if (progress < 1) {
+        const t = progress;
+        const jump = -Math.sin(Math.PI * t) * 100;
+        const rotate = t * 360;
+        const scale = 1 + Math.sin(Math.PI * t) * 0.25;
+        const brightness = 1 + Math.sin(Math.PI * t) * 1.5;
+        const glow = Math.sin(Math.PI * t) * 40;
+
+        logo.style.transform = `translateY(${jump}px) rotate(${rotate}deg) scale(${scale})`;
+        logo.style.filter = `brightness(${brightness}) drop-shadow(0 0 ${glow}px #FFD700)`;
+
+        requestAnimationFrame(animate);
+      } else {
+        logo.style.transform = '';
+        logo.style.filter = '';
+      }
+    }
+
+    requestAnimationFrame(animate);
   });
-  wrap.appendChild(container);
-  setTimeout(() => container.remove(), 600);
-}
-
-logo.style.cursor = 'pointer';
-logo.addEventListener('click', function() {
-  this.classList.remove('medal-spin');
-  void this.offsetWidth;
-  this.classList.add('medal-spin');
-  marioSound.currentTime = 0;
-  marioSound.play();
-  createSparkles();
-  this.addEventListener('animationend', () => {
-    this.classList.remove('medal-spin');
-  }, { once: true });
 });
 </script>
   
