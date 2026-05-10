@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Médias - BlueBot Reims</title>
+<title>Médias — BlueBot Reims</title>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -32,7 +32,6 @@
     font-size: 90%;
   }
 
-  /* ─── NAV ─── */
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -84,7 +83,6 @@
     border: 1px solid var(--blue-400);
   }
 
-  /* ─── HERO MÉDIAS ─── */
   .medias-hero {
     padding: 140px 2.5rem 60px;
     background: linear-gradient(135deg, #03193A 0%, #042C53 60%, #0a3d6b 100%);
@@ -137,7 +135,6 @@
     line-height: 1.65;
   }
 
-  /* ─── SECTION COMMUNE ─── */
   .section {
     padding: 5rem 2.5rem;
     max-width: 1200px;
@@ -164,7 +161,6 @@
     margin-bottom: 2rem;
   }
 
-  /* ─── VLOGS ─── */
   .vlogs-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -223,9 +219,7 @@
     padding: 0 1rem;
   }
 
-  .vlog-info {
-    padding: 1.25rem;
-  }
+  .vlog-info { padding: 1.25rem; }
 
   .vlog-num {
     font-family: 'Barlow Condensed', sans-serif;
@@ -246,7 +240,6 @@
     text-transform: uppercase;
   }
 
-  /* ─── GALERIE PHOTOS ─── */
   .gallery-controls {
     display: flex;
     align-items: center;
@@ -256,22 +249,15 @@
     gap: 1rem;
   }
 
-  .gallery-info {
-    color: var(--blue-200);
-    font-size: 0.9rem;
-  }
+  .gallery-info { color: var(--blue-200); font-size: 0.9rem; }
 
-  .gallery-nav {
-    display: flex;
-    gap: 0.5rem;
-  }
+  .gallery-nav { display: flex; gap: 0.5rem; }
 
   .gallery-nav button {
     background: rgba(55,138,221,0.15);
     border: 1px solid rgba(55,138,221,0.3);
     color: var(--white);
-    width: 40px;
-    height: 40px;
+    width: 40px; height: 40px;
     border-radius: 50%;
     font-size: 1.1rem;
     cursor: pointer;
@@ -314,8 +300,7 @@
   }
 
   .gallery-item img {
-    width: 100%;
-    height: 100%;
+    width: 100%; height: 100%;
     object-fit: cover;
     display: block;
   }
@@ -323,16 +308,14 @@
   .gallery-item .overlay {
     position: absolute;
     inset: 0;
-    background: rgba(4,44,83,0.0);
+    background: rgba(4,44,83,0);
     display: flex;
     align-items: center;
     justify-content: center;
     transition: background 0.2s;
   }
 
-  .gallery-item:hover .overlay {
-    background: rgba(4,44,83,0.4);
-  }
+  .gallery-item:hover .overlay { background: rgba(4,44,83,0.4); }
 
   .gallery-item .overlay span {
     opacity: 0;
@@ -342,7 +325,6 @@
 
   .gallery-item:hover .overlay span { opacity: 1; }
 
-  /* ─── LIGHTBOX ─── */
   .lightbox {
     display: none;
     position: fixed;
@@ -366,19 +348,15 @@
 
   .lightbox-close {
     position: absolute;
-    top: 1.5rem;
-    right: 1.5rem;
+    top: 1.5rem; right: 1.5rem;
     background: rgba(55,138,221,0.2);
     border: 1px solid rgba(55,138,221,0.3);
     color: var(--white);
-    width: 44px;
-    height: 44px;
+    width: 44px; height: 44px;
     border-radius: 50%;
     font-size: 1.3rem;
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: flex; align-items: center; justify-content: center;
   }
 
   .lightbox-prev, .lightbox-next {
@@ -388,14 +366,11 @@
     background: rgba(55,138,221,0.2);
     border: 1px solid rgba(55,138,221,0.3);
     color: var(--white);
-    width: 50px;
-    height: 50px;
+    width: 50px; height: 50px;
     border-radius: 50%;
     font-size: 1.4rem;
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: flex; align-items: center; justify-content: center;
     transition: background 0.2s;
   }
 
@@ -403,7 +378,6 @@
   .lightbox-next { right: 1rem; }
   .lightbox-prev:hover, .lightbox-next:hover { background: rgba(55,138,221,0.4); }
 
-  /* ─── FOOTER ─── */
   footer {
     background: #020f1f;
     border-top: 1px solid rgba(55,138,221,0.15);
@@ -423,11 +397,7 @@
 
   .footer-logo img { height: 56px; opacity: 0.85; }
 
-  .footer-links {
-    display: flex;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-  }
+  .footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
 
   .footer-links a {
     color: var(--blue-200);
@@ -451,7 +421,6 @@
     margin-right: auto;
   }
 
-  /* ─── RESPONSIVE ─── */
   @media (max-width: 900px) {
     .nav-links { display: none; }
     .vlogs-grid { grid-template-columns: 1fr; }
@@ -461,7 +430,6 @@
 </head>
 <body>
 
-<!-- ─── NAV ─── -->
 <nav>
   <a href="index.html" class="nav-logo">
     <img src="bluebot_no_background_fixed.png" alt="BlueBot Reims" onerror="this.style.display='none'">
@@ -478,15 +446,14 @@
   </ul>
 </nav>
 
-<!-- ─── HERO ─── -->
 <div class="medias-hero">
   <div class="medias-hero-inner">
     <span class="medias-hero-tag">BlueBot Reims · 2025–2026</span>
     <h1>Nos<br><span style="color:var(--amber-200);">Médias</span></h1>
     <p>Vlogs, photos de l'équipe, coulisses du projet — tout ce que vous voulez savoir sur l'aventure BlueBot.</p>
     <a href="index.html" style="display:inline-flex;align-items:center;gap:8px;margin-top:1.5rem;background:transparent;color:#85B7EB;text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-size:0.9rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;border-bottom:1px solid rgba(133,183,235,0.3);padding-bottom:2px;">
-  ← Retour au site principal
-</a>
+      ← Retour au site principal
+    </a>
   </div>
 </div>
 
@@ -494,15 +461,12 @@
 <div class="section">
   <span class="section-tag">Vidéos</span>
   <h2 class="section-title">🎬 Nos Vlogs</h2>
-
   <div class="vlogs-grid">
 
-    <!-- Vlog 1 -->
     <div class="vlog-card">
       <div class="vlog-embed">
         <iframe src="https://www.youtube.com/embed/hsxZxT-SBIo"
-          title="Vlog BlueBot #1"
-          frameborder="0"
+          title="Vlog BlueBot #1" frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen></iframe>
       </div>
@@ -512,12 +476,10 @@
       </div>
     </div>
 
-    <!-- Vlog 2 -->
     <div class="vlog-card">
       <div class="vlog-embed">
         <iframe src="https://www.youtube.com/embed/jAkc7PaDwXI"
-          title="Vlog BlueBot #2"
-          frameborder="0"
+          title="Vlog BlueBot #2" frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen></iframe>
       </div>
@@ -527,7 +489,6 @@
       </div>
     </div>
 
-    <!-- Vlog 3 — À venir -->
     <div class="vlog-card">
       <div class="vlog-coming">
         <div style="font-size:3rem;">🎬</div>
@@ -548,7 +509,6 @@
   <div class="section" style="padding-top:0;padding-bottom:0;">
     <span class="section-tag">Photos</span>
     <h2 class="section-title">📷 Album Photo</h2>
-
     <div class="gallery-controls">
       <span class="gallery-info">Glisse ou utilise les flèches pour naviguer</span>
       <div class="gallery-nav">
@@ -556,33 +516,7 @@
         <button onclick="document.getElementById('gallery').scrollBy({left:300,behavior:'smooth'})">→</button>
       </div>
     </div>
-
-    <div class="gallery-slider" id="gallery">
-      <div class="gallery-item" onclick="openLightbox(0)">
-        <img src="louison joseph ayoub.jpeg">
-        <div class="overlay"><span>🔍</span></div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox(1)">
-        <img src="louison joseph.jpeg">
-        <div class="overlay"><span>🔍</span></div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox(2)">
-        <img src="Vis louison.jpeg">
-        <div class="overlay"><span>🔍</span></div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox(3)">
-        <img src="Photo_equipe.jpg" alt="L'équipe BlueBot">
-        <div class="overlay"><span>🔍</span></div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox(4)">
-        <img src="Image__9_.jpeg" alt="Le terrain de jeu">
-        <div class="overlay"><span>🔍</span></div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox(5)">
-        <img src="Robot_Blue_Bot.png" alt="Notre robot 3D">
-        <div class="overlay"><span>🔍</span></div>
-      </div>
-    </div>
+    <div class="gallery-slider" id="gallery"></div>
   </div>
 </div>
 
@@ -617,36 +551,47 @@
 </footer>
 
 <script>
-// ─── COUNTDOWN VLOG 3 ───
+// ════════════════════════════════════════════════════
+// 👇 AJOUTE TES PHOTOS ICI ET SEULEMENT ICI
+// Pour ajouter une photo : copie une ligne et change le nom du fichier
+const photos = [
+  'louison joseph ayoub.jpeg',
+  'louison joseph.jpeg',
+  'Vis louison.jpeg',
+  'Photo_equipe.jpg',
+  'Image__9_.jpeg',
+  'Robot_Blue_Bot.png',
+  // 'nouvelle_photo.jpg',  ← décommente et change le nom
+];
+// ════════════════════════════════════════════════════
+
+// Génère automatiquement toutes les cartes photo
+const gallery = document.getElementById('gallery');
+photos.forEach((src, i) => {
+  const div = document.createElement('div');
+  div.className = 'gallery-item';
+  div.onclick = () => openLightbox(i);
+  div.innerHTML = `<img src="${src}" alt="Photo ${i+1}"><div class="overlay"><span>🔍</span></div>`;
+  gallery.appendChild(div);
+});
+
+// Countdown vlog 3
 function updateCountdown() {
-  const target = new Date('2026-05-20T00:00:00');
-  const now = new Date();
-  const diff = target - now;
-  if (diff <= 0) {
-    document.getElementById('countdown').textContent = 'En ligne !';
-    return;
-  }
-  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  document.getElementById('countdown').textContent = `${days}j ${hours}h`;
+  const diff = new Date('2026-05-20T00:00:00') - new Date();
+  const el = document.getElementById('countdown');
+  if (!el) return;
+  if (diff <= 0) { el.textContent = 'En ligne !'; return; }
+  el.textContent = `${Math.floor(diff/86400000)}j ${Math.floor((diff%86400000)/3600000)}h`;
 }
 updateCountdown();
 setInterval(updateCountdown, 60000);
 
-// ─── LIGHTBOX ───
-// Ajoute ici le chemin de chaque photo dans le même ordre que la galerie
-const photos = [
-  'Photo_equipe.jpg',
-  'Image__9_.jpeg',
-  'Robot_Blue_Bot.png',
-  // Ajoute tes photos ici : 'NOM_PHOTO.jpg',
-];
-
+// Lightbox
 let currentPhoto = 0;
 
-function openLightbox(index) {
-  currentPhoto = index;
-  document.getElementById('lightbox-img').src = photos[index];
+function openLightbox(i) {
+  currentPhoto = i;
+  document.getElementById('lightbox-img').src = photos[i];
   document.getElementById('lightbox').classList.add('active');
   document.body.style.overflow = 'hidden';
 }
@@ -662,7 +607,7 @@ function changeLightbox(dir) {
   document.getElementById('lightbox-img').src = photos[currentPhoto];
 }
 
-document.addEventListener('keydown', function(e) {
+document.addEventListener('keydown', e => {
   if (e.key === 'Escape') closeLightbox();
   if (e.key === 'ArrowLeft') changeLightbox(-1);
   if (e.key === 'ArrowRight') changeLightbox(1);
