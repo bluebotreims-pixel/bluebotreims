@@ -1015,6 +1015,39 @@
     border-top: 1px solid rgba(55,138,221,0.1);
   }
 
+/* ─── TEAM CAROUSEL ─── */
+.team-carousel-wrap {
+  position: relative;
+  overflow: hidden;
+  margin-top: 3rem;
+}
+
+.team-carousel {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding-bottom: 0.5rem;
+}
+
+.team-carousel::-webkit-scrollbar { display: none; }
+
+.team-carousel .member-card {
+  flex: 0 0 260px;
+  scroll-snap-align: start;
+}
+
+.team-carousel-fade {
+  position: absolute;
+  top: 0; right: 0;
+  width: 120px;
+  height: 100%;
+  background: linear-gradient(to right, transparent, #05203d);
+  pointer-events: none;
+}
+  
   /* ─── RESPONSIVE ─── */
   @media (max-width: 900px) {
     .hero-content { flex-direction: column-reverse; gap: 2rem; text-align: center; }
@@ -1042,6 +1075,7 @@
     <li><a href="#competition">Compétition</a></li>
     <li><a href="#robot">Notre Robot</a></li>
     <li><a href="#sponsors">Partenaires</a></li>
+    <li><a href="medias.html">Médias</a></li>
     <li><a href="#contact" class="nav-cta">Contact</a></li>
   </ul>
 </nav>
@@ -1192,60 +1226,74 @@
       Une équipe de 8 étudiants en 2ème année à l'ECAM, supervisée par un professeur de gestion de projet. Chacun apporte son expertise à notre mission.
     </p>
 
-    <div class="team-grid">
-      <div class="member-card">
-        <img src="photo Ayoub2.png" alt="Ayoub" style="width:52px;height:52px;border-radius:50%;object-fit:cover;border:2px solid #378ADD;margin-bottom:1rem;">
-        <div class="member-name">Ayoub</div>
-        <span class="member-role-tag tag-amber">Chef de Projet · Informatique</span>
-        <p class="member-desc">Pilote le projet globalement et co-lead la partie informatique du robot.</p>
+    <div class="team-carousel-wrap">
+      <div class="team-carousel" id="team-carousel">
+        <div class="member-card">
+          <img src="photo Ayoub2.png" alt="Ayoub" style="width:52px;height:52px;border-radius:50%;object-fit:cover;border:2px solid #378ADD;margin-bottom:1rem;">
+          <div class="member-name">Ayoub</div>
+          <span class="member-role-tag tag-amber">Chef de Projet · Informatique</span>
+          <p class="member-desc">Pilote le projet globalement et co-lead la partie informatique du robot.</p>
+        </div>
+        <div class="member-card">
+          <img src="photo Joseph.png" alt="Joseph" style="width:52px;height:52px;border-radius:50%;object-fit:cover;border:2px solid #378ADD;margin-bottom:1rem;">
+          <div class="member-name">Joseph</div>
+          <span class="member-role-tag tag-pink">Mécanique · Robot (Chef)</span>
+          <p class="member-desc">Chef de la mécanique robot — Lead la conception et la construction du robot.</p>
+        </div>
+        <div class="member-card">
+          <div class="member-avatar">MX</div>
+          <div class="member-name">Maxime</div>
+          <span class="member-role-tag" style="background:rgba(220,30,30,0.2);color:#ff4444;border:1px solid rgba(220,30,30,0.5);">Informatique (Chef)</span>
+          <p class="member-desc">Chef de la partie informatique — développement du code de contrôle du robot.</p>
+        </div>
+        <div class="member-card">
+          <div class="member-avatar">TH</div>
+          <div class="member-name">Thomas</div>
+          <span class="member-role-tag tag-purple">Mécanique · Terrain (Chef)</span>
+          <p class="member-desc">Chef de la partie terrain — conçoit et construit le terrain.</p>
+        </div>
+        <div class="member-card">
+          <div class="member-avatar">RA</div>
+          <div class="member-name">Ramy</div>
+          <span class="member-role-tag tag-teal">Comptabilité</span>
+          <span class="member-role-tag tag-blue">Communication</span>
+          <p class="member-desc">Gère le budget, les réseaux sociaux et la recherche de partenaires.</p>
+        </div>
+        <div class="member-card">
+          <div class="member-avatar">EL</div>
+          <div class="member-name">Elsa</div>
+          <span class="member-role-tag tag-pink">Mécanique · Robot</span>
+          <p class="member-desc">Conception mécanique du robot et assemblage des composants.</p>
+        </div>
+        <div class="member-card">
+          <div class="member-avatar">LO</div>
+          <div class="member-name">Louison</div>
+          <span class="member-role-tag tag-pink">Mécanique · Robot</span>
+          <p class="member-desc">Conception mécanique du robot et intégration des systèmes.</p>
+        </div>
+        <div class="member-card">
+          <div class="member-avatar">MA</div>
+          <div class="member-name">Marius</div>
+          <span class="member-role-tag tag-purple">Mécanique · Terrain</span>
+          <p class="member-desc">Conçoit et construit la partie terrain pour le robot.</p>
+        </div>
       </div>
-      <div class="member-card">
-        <img src="photo Joseph.png" alt="Joseph" style="width:52px;height:52px;border-radius:50%;object-fit:cover;border:2px solid #378ADD;margin-bottom:1rem;">
-        <div class="member-name">Joseph</div>
-        <span class="member-role-tag tag-pink">Mécanique · Robot (Chef)</span>
-        <p class="member-desc">Chef de la mécanique robot — Lead la conception et la construction du robot</p>
-      </div>
-      <div class="member-card">
-        <div class="member-avatar">MX</div>
-        <div class="member-name">Maxime</div>
-        <span class="member-role-tag" style="background:rgba(220,30,30,0.2);color:#ff4444;border:1px solid rgba(220,30,30,0.5);">Informatique (Chef)</span>
-        <p class="member-desc">Chef de la partie informatique — développement du code de contrôle du robot.</p>
-      </div>
-      <div class="member-card">
-        <div class="member-avatar">TH</div>
-        <div class="member-name">Thomas</div>
-        <span class="member-role-tag tag-purple">Mécanique · Terrain (Chef)</span>
-        <p class="member-desc">Chef de la partie terrain — conçoit et construit le terrain</p>
-      </div>
-      <div class="member-card">
-        <div class="member-avatar">RA</div>
-        <div class="member-name">Ramy</div>
-        <span class="member-role-tag tag-teal">Comptabilité</span>
-        <span class="member-role-tag tag-blue">Communication</span>
-        <p class="member-desc">Gère le budget de l'équipe, les réseaux sociaux, la communication externe et la recherche de partenaires.</p>
-      </div>
-      <div class="member-card">
-        <div class="member-avatar">EL</div>
-        <div class="member-name">Elsa</div>
-        <span class="member-role-tag tag-pink">Mécanique · Robot</span>
-        <p class="member-desc">Conception mécanique du robot et assemblage des composants.</p>
-      </div>
-      <div class="member-card">
-        <div class="member-avatar">LO</div>
-        <div class="member-name">Louison</div>
-        <span class="member-role-tag tag-pink">Mécanique · Robot</span>
-        <p class="member-desc">Conception mécanique du robot et intégration des systèmes.</p>
-      </div>
-      <div class="member-card">
-        <div class="member-avatar">MA</div>
-        <div class="member-name">Marius</div>
-        <span class="member-role-tag tag-purple">Mécanique · Terrain</span>
-        <p class="member-desc">Conçoit et construit la partie terrain pour le robot.</p>
-      </div>
+      <div class="team-carousel-fade"></div>
     </div>
+
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-top:1.5rem;flex-wrap:wrap;gap:1rem;">
+      <div style="display:flex;gap:0.75rem;">
+        <button onclick="document.getElementById('team-carousel').scrollBy({left:-280,behavior:'smooth'})"
+          style="background:rgba(55,138,221,0.15);border:1px solid rgba(55,138,221,0.3);color:#fff;width:40px;height:40px;border-radius:50%;font-size:1.1rem;cursor:pointer;">←</button>
+        <button onclick="document.getElementById('team-carousel').scrollBy({left:280,behavior:'smooth'})"
+          style="background:rgba(55,138,221,0.15);border:1px solid rgba(55,138,221,0.3);color:#fff;width:40px;height:40px;border-radius:50%;font-size:1.1rem;cursor:pointer;">→</button>
+      </div>
+      <a href="medias.html" class="btn-primary">Voir + sur l'équipe →</a>
+    </div>
+
   </div>
 </section>
-
+  
 <!-- ─── COMPETITION ─── -->
 <section id="competition">
   <div class="section-inner">
