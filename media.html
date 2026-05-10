@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Médias — BlueBot Reims</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue-900: #042C53;
+    --blue-800: #0C447C;
+    --blue-600: #185FA5;
+    --blue-400: #378ADD;
+    --blue-200: #85B7EB;
+    --blue-100: #B5D4F4;
+    --amber-200: #EF9F27;
+    --amber-100: #FAC775;
+    --gray-900: #2C2C2A;
+    --gray-500: #888780;
+    --gray-200: #B4B2A9;
+    --white: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Barlow', sans-serif;
+    background: #030f1f;
+    color: var(--white);
+    overflow-x: hidden;
+    font-size: 90%;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2.5rem;
+    height: 70px;
+    background: rgba(4, 44, 83, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(55, 138, 221, 0.2);
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+  }
+
+  .nav-logo img { height: 48px; width: auto; }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--blue-100);
+    text-decoration: none;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--amber-200); }
+  .nav-links a.active { color: var(--amber-200); }
+
+  .nav-cta {
+    background: var(--blue-600);
+    color: var(--white) !important;
+    padding: 0.45rem 1.2rem;
+    border-radius: 6px;
+    border: 1px solid var(--blue-400);
+  }
+
+  /* ─── HERO MÉDIAS ─── */
+  .medias-hero {
+    padding: 140px 2.5rem 60px;
+    background: linear-gradient(135deg, #03193A 0%, #042C53 60%, #0a3d6b 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .medias-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(55,138,221,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(55,138,221,0.06) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+  }
+
+  .medias-hero-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  .medias-hero-tag {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--amber-200);
+    display: block;
+    margin-bottom: 0.75rem;
+  }
+
+  .medias-hero h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(3rem, 7vw, 5rem);
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 0.95;
+    margin-bottom: 1rem;
+  }
+
+  .medias-hero p {
+    color: var(--blue-200);
+    font-size: 1.05rem;
+    max-width: 500px;
+    line-height: 1.65;
+  }
+
+  /* ─── SECTION COMMUNE ─── */
+  .section {
+    padding: 5rem 2.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-tag {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--amber-200);
+    display: block;
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 1;
+    margin-bottom: 2rem;
+  }
+
+  /* ─── VLOGS ─── */
+  .vlogs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .vlog-card {
+    background: rgba(12,68,124,0.2);
+    border: 1px solid rgba(55,138,221,0.2);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform 0.2s, border-color 0.2s;
+  }
+
+  .vlog-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(55,138,221,0.4);
+  }
+
+  .vlog-embed {
+    aspect-ratio: 9/16;
+    width: 100%;
+    max-height: 500px;
+  }
+
+  .vlog-embed iframe {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .vlog-coming {
+    aspect-ratio: 9/16;
+    width: 100%;
+    max-height: 500px;
+    background: rgba(4,44,83,0.6);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .vlog-coming .countdown {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--amber-200);
+    line-height: 1;
+  }
+
+  .vlog-coming p {
+    color: var(--blue-200);
+    font-size: 0.9rem;
+    text-align: center;
+    padding: 0 1rem;
+  }
+
+  .vlog-info {
+    padding: 1.25rem;
+  }
+
+  .vlog-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--amber-200);
+    margin-bottom: 0.3rem;
+    display: block;
+  }
+
+  .vlog-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--white);
+    text-transform: uppercase;
+  }
+
+  /* ─── GALERIE PHOTOS ─── */
+  .gallery-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .gallery-info {
+    color: var(--blue-200);
+    font-size: 0.9rem;
+  }
+
+  .gallery-nav {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .gallery-nav button {
+    background: rgba(55,138,221,0.15);
+    border: 1px solid rgba(55,138,221,0.3);
+    color: var(--white);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .gallery-nav button:hover {
+    background: rgba(55,138,221,0.3);
+    border-color: rgba(55,138,221,0.6);
+  }
+
+  .gallery-slider {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding-bottom: 0.5rem;
+  }
+
+  .gallery-slider::-webkit-scrollbar { display: none; }
+
+  .gallery-item {
+    flex: 0 0 280px;
+    scroll-snap-align: start;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(55,138,221,0.2);
+    aspect-ratio: 4/3;
+    background: rgba(4,44,83,0.4);
+    cursor: pointer;
+    transition: transform 0.2s, border-color 0.2s;
+    position: relative;
+  }
+
+  .gallery-item:hover {
+    transform: scale(1.02);
+    border-color: rgba(55,138,221,0.5);
+  }
+
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .gallery-item .overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(4,44,83,0.0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+  }
+
+  .gallery-item:hover .overlay {
+    background: rgba(4,44,83,0.4);
+  }
+
+  .gallery-item .overlay span {
+    opacity: 0;
+    font-size: 2rem;
+    transition: opacity 0.2s;
+  }
+
+  .gallery-item:hover .overlay span { opacity: 1; }
+
+  /* ─── LIGHTBOX ─── */
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.92);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+
+  .lightbox.active { display: flex; }
+
+  .lightbox img {
+    max-width: 90vw;
+    max-height: 85vh;
+    object-fit: contain;
+    border-radius: 12px;
+    border: 1px solid rgba(55,138,221,0.3);
+  }
+
+  .lightbox-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: rgba(55,138,221,0.2);
+    border: 1px solid rgba(55,138,221,0.3);
+    color: var(--white);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    font-size: 1.3rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .lightbox-prev, .lightbox-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(55,138,221,0.2);
+    border: 1px solid rgba(55,138,221,0.3);
+    color: var(--white);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 1.4rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+  }
+
+  .lightbox-prev { left: 1rem; }
+  .lightbox-next { right: 1rem; }
+  .lightbox-prev:hover, .lightbox-next:hover { background: rgba(55,138,221,0.4); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: #020f1f;
+    border-top: 1px solid rgba(55,138,221,0.15);
+    padding: 3rem 2.5rem 2rem;
+    margin-top: 4rem;
+  }
+
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .footer-logo img { height: 56px; opacity: 0.85; }
+
+  .footer-links {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .footer-links a {
+    color: var(--blue-200);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--white); }
+
+  .footer-copy {
+    color: var(--gray-500);
+    font-size: 0.8rem;
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(55,138,221,0.1);
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+    .vlogs-grid { grid-template-columns: 1fr; }
+    .gallery-item { flex: 0 0 220px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="bluebot_no_background_fixed.png" alt="BlueBot Reims" onerror="this.style.display='none'">
+    <img src="ECAM___FIRST_Logo.png" alt="ECAM LaSalle & FIRST" style="height:48px;">
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">À propos</a></li>
+    <li><a href="index.html#team">Équipe</a></li>
+    <li><a href="index.html#competition">Compétition</a></li>
+    <li><a href="index.html#robot">Notre Robot</a></li>
+    <li><a href="index.html#sponsors">Partenaires</a></li>
+    <li><a href="medias.html" class="active">Médias</a></li>
+    <li><a href="index.html#contact" class="nav-cta">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ─── HERO ─── -->
+<div class="medias-hero">
+  <div class="medias-hero-inner">
+    <span class="medias-hero-tag">BlueBot Reims · 2025–2026</span>
+    <h1>Nos<br><span style="color:var(--amber-200);">Médias</span></h1>
+    <p>Vlogs, photos de l'équipe, coulisses du projet — tout ce que vous voulez savoir sur l'aventure BlueBot.</p>
+  </div>
+</div>
+
+<!-- ─── VLOGS ─── -->
+<div class="section">
+  <span class="section-tag">Vidéos</span>
+  <h2 class="section-title">🎬 Nos Vlogs</h2>
+
+  <div class="vlogs-grid">
+
+    <!-- Vlog 1 -->
+    <div class="vlog-card">
+      <div class="vlog-embed">
+        <iframe src="https://www.youtube.com/embed/hsxZxT-SBIo"
+          title="Vlog BlueBot #1"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen></iframe>
+      </div>
+      <div class="vlog-info">
+        <span class="vlog-num">Vlog #1</span>
+        <div class="vlog-title">Les débuts de l'aventure</div>
+      </div>
+    </div>
+
+    <!-- Vlog 2 -->
+    <div class="vlog-card">
+      <div class="vlog-embed">
+        <iframe src="https://www.youtube.com/embed/BHm0VQPzYyI"
+          title="Vlog BlueBot #2"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen></iframe>
+      </div>
+      <div class="vlog-info">
+        <span class="vlog-num">Vlog #2</span>
+        <div class="vlog-title">En pleine construction</div>
+      </div>
+    </div>
+
+    <!-- Vlog 3 — À venir -->
+    <div class="vlog-card">
+      <div class="vlog-coming">
+        <div style="font-size:3rem;">🎬</div>
+        <div class="countdown" id="countdown">--j --h</div>
+        <p>Le Vlog #3 arrive le <strong style="color:var(--amber-200);">20 mai 2026</strong> !</p>
+      </div>
+      <div class="vlog-info">
+        <span class="vlog-num">Vlog #3 · Bientôt</span>
+        <div class="vlog-title">La dernière ligne droite</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ─── GALERIE PHOTOS ─── -->
+<div style="background:#042C53;padding:5rem 0;">
+  <div class="section" style="padding-top:0;padding-bottom:0;">
+    <span class="section-tag">Photos</span>
+    <h2 class="section-title">📷 Album Photo</h2>
+
+    <div class="gallery-controls">
+      <span class="gallery-info">Glisse ou utilise les flèches pour naviguer</span>
+      <div class="gallery-nav">
+        <button onclick="document.getElementById('gallery').scrollBy({left:-300,behavior:'smooth'})">←</button>
+        <button onclick="document.getElementById('gallery').scrollBy({left:300,behavior:'smooth'})">→</button>
+      </div>
+    </div>
+
+    <div class="gallery-slider" id="gallery">
+      <!-- Ajoute tes photos ici en dupliquant ce bloc -->
+      <div class="gallery-item" onclick="openLightbox(0)">
+        <img src="Photo_equipe.jpg" alt="L'équipe BlueBot">
+        <div class="overlay"><span>🔍</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(1)">
+        <img src="Image__9_.jpeg" alt="Le terrain de jeu">
+        <div class="overlay"><span>🔍</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(2)">
+        <img src="Robot_Blue_Bot.png" alt="Notre robot 3D">
+        <div class="overlay"><span>🔍</span></div>
+      </div>
+      <!-- Copie ce bloc pour chaque nouvelle photo :
+      <div class="gallery-item" onclick="openLightbox(X)">
+        <img src="NOM_PHOTO.jpg" alt="Description">
+        <div class="overlay"><span>🔍</span></div>
+      </div>
+      Remplace X par le numéro suivant (3, 4, 5...)
+      et ajoute le nom de la photo dans le tableau photos[] dans le script
+      -->
+    </div>
+  </div>
+</div>
+
+<!-- ─── LIGHTBOX ─── -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <button class="lightbox-prev" onclick="event.stopPropagation();changeLightbox(-1)">←</button>
+  <img id="lightbox-img" src="" alt="">
+  <button class="lightbox-next" onclick="event.stopPropagation();changeLightbox(1)">→</button>
+</div>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <img src="bluebot_no_background_fixed.png" alt="BlueBot Reims" onerror="this.style.display='none'">
+    </div>
+    <div class="footer-links">
+      <a href="index.html#about">À propos</a>
+      <a href="index.html#team">Équipe</a>
+      <a href="index.html#competition">Compétition</a>
+      <a href="index.html#robot">Robot</a>
+      <a href="index.html#sponsors">Partenaires</a>
+      <a href="medias.html">Médias</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+    <div class="footer-logo">
+      <img src="ECAM___FIRST_Logo.png" alt="ECAM LaSalle & FIRST" style="height:56px;opacity:0.85;">
+    </div>
+  </div>
+  <p class="footer-copy">© 2026 BlueBot Reims · ECAM LaSalle · FIRST Tech Challenge · @BLUEBOTREIMS</p>
+</footer>
+
+<script>
+// ─── COUNTDOWN VLOG 3 ───
+function updateCountdown() {
+  const target = new Date('2026-05-20T00:00:00');
+  const now = new Date();
+  const diff = target - now;
+  if (diff <= 0) {
+    document.getElementById('countdown').textContent = 'En ligne !';
+    return;
+  }
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  document.getElementById('countdown').textContent = `${days}j ${hours}h`;
+}
+updateCountdown();
+setInterval(updateCountdown, 60000);
+
+// ─── LIGHTBOX ───
+// Ajoute ici le chemin de chaque photo dans le même ordre que la galerie
+const photos = [
+  'Photo_equipe.jpg',
+  'Image__9_.jpeg',
+  'Robot_Blue_Bot.png',
+  // Ajoute tes photos ici : 'NOM_PHOTO.jpg',
+];
+
+let currentPhoto = 0;
+
+function openLightbox(index) {
+  currentPhoto = index;
+  document.getElementById('lightbox-img').src = photos[index];
+  document.getElementById('lightbox').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox(e) {
+  if (e && e.target !== document.getElementById('lightbox')) return;
+  document.getElementById('lightbox').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function changeLightbox(dir) {
+  currentPhoto = (currentPhoto + dir + photos.length) % photos.length;
+  document.getElementById('lightbox-img').src = photos[currentPhoto];
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowLeft') changeLightbox(-1);
+  if (e.key === 'ArrowRight') changeLightbox(1);
+});
+</script>
+
+</body>
+</html>
